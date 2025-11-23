@@ -1,0 +1,28 @@
+[project]
+name = "smart-rag"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "AmanKadam-16",email = "aman16112002kadam@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "sqlalchemy (>=2.0.44,<3.0.0)",
+    "pydantic (>=2.12.4,<3.0.0)",
+    "pydantic-settings (>=2.12.0,<3.0.0)",
+    "uvicorn (>=0.38.0,<0.39.0)",
+    "fastapi (>=0.121.3,<0.122.0)",
+    "poethepoet (>=0.38.0,<0.39.0)",
+    "alembic (>=1.17.2,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "smart_rag", from = "src"}]
+
+[tool.poe.tasks]
+rag = "uvicorn src.smart_rag.main:app --reload --port 8000"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
